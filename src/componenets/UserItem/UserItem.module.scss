@@ -1,0 +1,14 @@
+.wrapper{
+  border: .0625rem solid #f8f8f8;
+  border-radius: 1rem;
+  box-shadow: 0 .0625rem .875rem .0625rem rgba(20,20,20,.06);
+  width: 300px;
+  padding: 10px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.wrapper:hover{
+  transform: scale(1.15);
+  object-fit: cover;
+}
