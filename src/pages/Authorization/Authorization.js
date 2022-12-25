@@ -16,7 +16,7 @@ import { useForm, FormProvider } from "react-hook-form";
 
 const Authorization = ({ setIsLoggedIn, setUserName, setUserEmail }) => {
 
-    const [showPassword, setShowPassword] = useState(localStorage.getItem('isLoggedIn') === 'true');
+    const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => {
         setShowPassword(prev => !prev)
