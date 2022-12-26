@@ -10,7 +10,7 @@ const AppRoutes = () => {
 
     const [isLoadedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
     const [userName, setUserName] = useState(localStorage.getItem('userName'));
-    const [userEmail, setUserEmail] = useState(localStorage.getItem('userEmail'));
+
 
     return (
         <Routes>
@@ -18,7 +18,6 @@ const AppRoutes = () => {
                    element={<Authorization
                        setIsLoggedIn={setIsLoggedIn}
                        setUserName={setUserName}
-                       setUserEmail={setUserEmail}
                    />}
             />
             <Route path="/users"
@@ -27,8 +26,6 @@ const AppRoutes = () => {
                        setIsLoggedIn={setIsLoggedIn}
                        userName={userName}
                        setUserName={setUserName}
-                       userEmail={userEmail}
-                       setUserEmail={setUserEmail}
                    />}
             />
             <Route path="/posts"

@@ -6,15 +6,19 @@ header{
   display: flex;
   align-items: center;
   justify-content: center;
-  background: burlywood;
+  background: linear-gradient(to right, rgb(187, 165, 164), rgb(161, 202, 121));
 
-  .header_list{
+  .header_nav{
     display: flex;
     list-style-type: none;
     font-size: 18px;
     justify-content: space-between;
     align-items: center;
     width: 760px;
+
+    .header_list{
+      padding-left: 0;
+    }
 
     li{
       list-style-type: none;

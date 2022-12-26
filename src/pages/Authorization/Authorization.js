@@ -14,7 +14,7 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { useForm, FormProvider } from "react-hook-form";
 
 
-const Authorization = ({ setIsLoggedIn, setUserName, setUserEmail }) => {
+const Authorization = ({ setIsLoggedIn, setUserName }) => {
 
     const [showPassword, setShowPassword] = useState(false);
 
@@ -35,12 +35,9 @@ const Authorization = ({ setIsLoggedIn, setUserName, setUserEmail }) => {
     })
 
     const onSubmit = (data) => {
-        console.log('data', data)
         localStorage.setItem('isLoggedIn', 'true');
         localStorage.setItem('userName', data.username);
-        localStorage.setItem('userEmail', data.email);
         setUserName(data.username);
-        setUserEmail(data.email);
         setIsLoggedIn(true);
         navigate('./users')
         methods.reset();

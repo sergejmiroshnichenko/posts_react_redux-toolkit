@@ -1,43 +1,60 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './UserItem.module.scss'
+import { PrimaryButton } from '../Button/Button'
+import { SlNote } from 'react-icons/sl';
+import Modal from '../../componenets/Modal/Modal'
 
 
 const UserItem = ({ user }) => {
+    const [modalActive, setModalActive] = useState(false);
 
     return (
-        <div className={styles.wrapper}>
-            <ul>
-                <li>
-                    <strong>№</strong>
-                    {user.id}
-                </li>
-                <li>
-                    <strong>name:</strong> {user.name}
-                </li>
-                <li>
-                    <strong>city:</strong> {user.address.city}
-                </li>
-                <li>
-                    <strong>street:</strong> {user.address.street}
-                </li>
-                <li>
-                    <strong>suite:</strong> {user.address.suite}
-                </li>
-                <li>
-                    <strong>phone:</strong> {user.phone}
-                </li>
-                <li>
-                    <strong>email:</strong> {user.email}
-                </li>
-                <li>
-                    <strong>website:</strong> {user.website}
-                </li>
-            </ul>
-            <div>
-                <button>posts</button>
-                <button>albums</button>
+        <>
+            <div className={styles.user_wrapper}>
+                <ul className={styles.user_list}>
+                    <li>
+                        <strong>№</strong>
+                        {user.id}
+                    </li>
+                    <li>
+                        <strong>name:</strong> {user.name}
+                    </li>
+                    <li>
+                        <strong>city:</strong> {user.address.city}
+                    </li>
+                    <li>
+                        <strong>street:</strong> {user.address.street}
+                    </li>
+                    <li>
+                        <strong>suite:</strong> {user.address.suite}
+                    </li>
+                    <li>
+                        <strong>phone:</strong> {user.phone}
+                    </li>
+                    <li>
+                        <strong>email:</strong> {user.email}
+                    </li>
+                    <li>
+                        <strong>website:</strong> {user.website}
+                    </li>
+                </ul>
+                <div>
+                    <PrimaryButton
+                        color='primary'
+                        endIcon={<SlNote/>}>
+                        posts
+                    </PrimaryButton>
+                    <PrimaryButton
+                        onClick={() => setModalActive(true)}
+                        color='secondary'>
+                        albums
+                    </PrimaryButton>
+                </div>
             </div>
-        </div>
+            <Modal active={modalActive} setActive={setModalActive}
+                   title={'New message'} minWidth={'post'}>
+            </Modal>
+        </>
     );
 };
 

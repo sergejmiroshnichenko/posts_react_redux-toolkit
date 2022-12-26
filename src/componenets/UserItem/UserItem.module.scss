@@ -1,14 +1,39 @@
-.wrapper{
+.user_wrapper{
   border: .0625rem solid #f8f8f8;
-  border-radius: 1rem;
-  box-shadow: 0 .0625rem .875rem .0625rem rgba(20,20,20,.06);
-  width: 300px;
+  //box-shadow: 0 .0625rem .875rem .0625rem rgba(20,20,20,.06);
+  width: 230px;
   padding: 10px;
-  margin: 0 auto;
+  margin: 15px 0;
   box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: rgba(0,0,0,0.3) 0 19px 38px, rgba(0,0,0,0.22) 0 15px 12px;
 }
 
-.wrapper:hover{
-  transform: scale(1.15);
+.user_wrapper:hover{
+  filter: drop-shadow(0px 4px 4px rgba(18, 87, 91, 0.25));
+}
+
+.user_list:hover{
+  transform: scale(1.1);
+}
+
+.user_list {
   object-fit: cover;
+  transition: 1.25s;
+  padding-left: 0;
+}
+
+li{
+  list-style-type: none;
+}
+
+.user_list li:first-of-type{
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.user_list li{
+  font-size: 13px;
 }

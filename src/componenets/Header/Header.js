@@ -2,27 +2,26 @@ import React from 'react';
 import styles from './Header.module.scss';
 import { NavLink } from 'react-router-dom';
 import { GrLogout as LogOut } from 'react-icons/gr';
+import {FaUserTie as User } from 'react-icons/fa'
 
 
-const Header = ({ isLoadedIn, setIsLoggedIn, userName, setUserName, userEmail, setUserEmail }) => {
+
+const Header = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) => {
 
     const handleLogOut = () => {
         localStorage.setItem('isLoggedIn', 'false');
         localStorage.setItem('userName', '');
-        localStorage.setItem('userEmail', '');
         setIsLoggedIn(false);
         setUserName('');
-        setUserEmail('');
     }
 
     return (
         <header>
             {
                 isLoadedIn &&
-                <nav className={styles.header_list}>
-                    <ul>
-                        <li><em>Welcome,</em>&nbsp;<strong>{userName}</strong></li>
-                        <li> {userEmail}</li>
+                <nav className={styles.header_nav}>
+                    <ul className={styles.header_list}>
+                        <li><em>Welcome, <User style={{ fontSize: '24px' }}/></em>&nbsp; <strong>{userName}</strong></li>
                     </ul>
                     <NavLink
                         className={styles.logout}
