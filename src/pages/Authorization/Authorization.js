@@ -39,7 +39,7 @@ const Authorization = ({ setIsLoggedIn, setUserName }) => {
         localStorage.setItem('userName', data.username);
         setUserName(data.username);
         setIsLoggedIn(true);
-        navigate('./users')
+        navigate('/users')
         methods.reset();
     }
 

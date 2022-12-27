@@ -29,7 +29,12 @@ const AppRoutes = () => {
                    />}
             />
             <Route path="/posts"
-                   element={<UserPostListPage />}
+                   element={<UserPostListPage
+                       isLoadedIn={isLoadedIn}
+                       setIsLoggedIn={setIsLoggedIn}
+                       userName={userName}
+                       setUserName={setUserName}
+                   />}
             />
             <Route path="*"
                    element={<Page404 isLoadedIn={isLoadedIn}/>}

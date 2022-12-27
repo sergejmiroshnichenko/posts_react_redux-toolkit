@@ -1,13 +1,32 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top{
+  flex-grow: 1;
+  position: relative;
+}
+
 .main{
   display: flex;
   width: 1160px;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  margin: 20px auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%)
 }
 
 footer{
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.spinner{
+
 }

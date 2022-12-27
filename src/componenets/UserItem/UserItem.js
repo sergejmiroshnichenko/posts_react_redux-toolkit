@@ -3,10 +3,13 @@ import styles from './UserItem.module.scss'
 import { PrimaryButton } from '../Button/Button'
 import { SlNote } from 'react-icons/sl';
 import Modal from '../../componenets/Modal/Modal'
+import { useNavigate } from 'react-router-dom'
 
 
 const UserItem = ({ user }) => {
+
     const [modalActive, setModalActive] = useState(false);
+    const navigate = useNavigate()
 
     return (
         <>
@@ -41,6 +44,7 @@ const UserItem = ({ user }) => {
                 <div>
                     <PrimaryButton
                         color='primary'
+                        onClick={() => navigate('/posts')}
                         endIcon={<SlNote/>}>
                         posts
                     </PrimaryButton>
