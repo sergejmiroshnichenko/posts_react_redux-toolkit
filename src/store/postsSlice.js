@@ -2,13 +2,11 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from "axios";
 import { delay } from '../utils/delay'
 
-
 const initialState = {
     posts: [],
     status: null,
     error: null
 }
-
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
     async (userId,_, { rejectWithValue }) => {
@@ -27,7 +25,6 @@ export const getPosts = createAsyncThunk(
         } catch (err) {
             return rejectWithValue(err.message);
         }
-        // }
     }
 )
 
@@ -48,7 +45,7 @@ export const postsSlice = createSlice({
             })
             .addCase(getPosts.fulfilled, (state, action) => {
                 state.status = 'resolved';
-                state.users = action.payload;
+                state.posts = action.payload;
             })
             .addCase(getPosts.rejected, (state, action) => {
                 state.status = 'rejected';
