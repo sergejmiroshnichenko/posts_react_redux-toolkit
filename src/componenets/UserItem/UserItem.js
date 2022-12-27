@@ -4,12 +4,23 @@ import { PrimaryButton } from '../Button/Button'
 import { SlNote } from 'react-icons/sl';
 import Modal from '../../componenets/Modal/Modal'
 import { useNavigate } from 'react-router-dom'
+// import { getPosts } from "../../store/postsSlice";
+// import UserPostListPage from "../../pages/UserPostListPage/UserPostListPage";
+// import {useDispatch} from 'react-redux'
 
 
 const UserItem = ({ user }) => {
 
+    // const dispatch = useDispatch()
+
     const [modalActive, setModalActive] = useState(false);
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+
+    const handleUserPostsBtnClick = (id) => {
+        // dispatch(getPosts.actions.redirect(UserPostListPage(id)))
+        navigate('/posts/:id')
+    }
+
 
     return (
         <>
@@ -44,7 +55,7 @@ const UserItem = ({ user }) => {
                 <div>
                     <PrimaryButton
                         color='primary'
-                        onClick={() => navigate('/posts')}
+                        onClick={() => handleUserPostsBtnClick(user.id)}
                         endIcon={<SlNote/>}>
                         posts
                     </PrimaryButton>

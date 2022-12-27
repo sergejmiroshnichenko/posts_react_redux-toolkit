@@ -15,12 +15,7 @@ export const getUsers = createAsyncThunk(
 
             try {
                 await delay(300)
-                const response = await axios.get('https://jsonplaceholder.typicode.com/users/').catch(err => {
-                    if (!err.response.status.ok) {
-                        throw new Error(`${err.config.url} server error: ${err.response.status}`);
-                    }
-                    throw err;
-                });
+                const response = await axios.get('https://jsonplaceholder.typicode.com/users/')
                 // dispatch(setUsers(response.data))
                 return response.data
             } catch (err) {

@@ -28,7 +28,7 @@ const AppRoutes = () => {
                        setUserName={setUserName}
                    />}
             />
-            <Route path="/posts"
+            <Route path="/posts/:id"
                    element={<UserPostListPage
                        isLoadedIn={isLoadedIn}
                        setIsLoggedIn={setIsLoggedIn}

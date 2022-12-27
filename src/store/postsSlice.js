@@ -7,21 +7,21 @@ const initialState = {
     status: null,
     error: null
 }
+
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
-    async (userId,_, { rejectWithValue }) => {
-
+    async (userId, _, { rejectWithValue }) => {
         try {
             await delay(300)
-            const response = await axios.get(`https://jsonplaceholder.typicode.com//users/${userId}/posts`).catch(err => {
-                if (!err.response.status.ok) {
-                    throw new Error(`${err.config.url} server error: ${err.response.status}`);
-                }
-                throw err;
-            });
-            // dispatch(setUsers(response.data))
-            console.log(response.data)
-            return response.data
+            const user = await axios.get(`https://jsonplaceholder.typicode.com//users/${userId}`)
+            const posts = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+
+            console.log('user.data', user.data)
+            console.log('posts.data', posts.data)
+            return  {
+                user: user.data,
+                posts: posts.data
+            }
         } catch (err) {
             return rejectWithValue(err.message);
         }
@@ -31,12 +31,6 @@ export const getPosts = createAsyncThunk(
 export const postsSlice = createSlice({
     name: 'posts',
     initialState,
-    // reducers: {
-    //     setUsers: (state, action) => {
-    //         state.users = action.payload
-    //     }
-    // },
-
     extraReducers: builder => {
         builder
             .addCase(getPosts.pending, (state) => {

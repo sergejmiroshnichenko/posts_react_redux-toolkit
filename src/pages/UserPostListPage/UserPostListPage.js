@@ -1,26 +1,31 @@
-import React, {useEffect} from 'react';
-import { useNavigate } from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "../UserListPage/UserListPage.module.scss";
 import Header from "../../componenets/Header/Header";
 import Footer from "../../componenets/Footer/Footer";
-
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../componenets/Spinner/Spinner";
 import { getPosts } from "../../store/postsSlice";
 import PostsItem from '../../componenets/PostsItem/PostsItem'
 
 
-
 const UserPostListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) => {
 
-
     const dispatch = useDispatch()
+    const { id } = useParams()
+    console.log('id', id)
+
+    useEffect(() => {
+        if (id) {
+            dispatch((getPosts(id)));
+        }
+    }, [id,dispatch]);
+
     const { status, error, posts } = useSelector(state => state.posts);
 
     useEffect(() => {
         dispatch(getPosts())
     }, [dispatch])
-
 
     const navigation = useNavigate()
     const goBack = () => navigation(-1)
