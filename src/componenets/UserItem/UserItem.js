@@ -1,26 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './UserItem.module.scss'
 import { PrimaryButton } from '../Button/Button'
 import { SlNote } from 'react-icons/sl';
-import Modal from '../../componenets/Modal/Modal'
 import { useNavigate } from 'react-router-dom'
-// import { getPosts } from "../../store/postsSlice";
-// import UserPostListPage from "../../pages/UserPostListPage/UserPostListPage";
-// import {useDispatch} from 'react-redux'
+import { getPosts } from "../../store/postsSlice";
+import { useDispatch } from 'react-redux'
 
 
-const UserItem = ({ user }) => {
+const UserItem = ({ user, setModalActive }) => {
 
-    // const dispatch = useDispatch()
-
-    const [modalActive, setModalActive] = useState(false);
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleUserPostsBtnClick = (id) => {
-        // dispatch(getPosts.actions.redirect(UserPostListPage(id)))
-        navigate('/posts/:id')
+        dispatch((getPosts(id)));
+        navigate(`/posts/${id}`)
     }
-
 
     return (
         <>
@@ -32,6 +27,9 @@ const UserItem = ({ user }) => {
                     </li>
                     <li>
                         <strong>name:</strong> {user.name}
+                    </li>
+                    <li>
+                        <strong>username:</strong> {user.username}
                     </li>
                     <li>
                         <strong>city:</strong> {user.address.city}
@@ -66,9 +64,6 @@ const UserItem = ({ user }) => {
                     </PrimaryButton>
                 </div>
             </div>
-            <Modal active={modalActive} setActive={setModalActive}
-                   title={'New message'} minWidth={'post'}>
-            </Modal>
         </>
     );
 };

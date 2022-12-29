@@ -3,22 +3,22 @@ import axios from "axios";
 import { delay } from '../utils/delay'
 
 const initialState = {
-    posts: [],
+    data: null,
     status: null,
     error: null
 }
 
 export const getPosts = createAsyncThunk(
     'posts/getPosts',
-    async (userId, _, { rejectWithValue }) => {
+    async (userId, { rejectWithValue }) => {
         try {
             await delay(300)
-            const user = await axios.get(`https://jsonplaceholder.typicode.com//users/${userId}`)
+            const user = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
             const posts = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
 
             console.log('user.data', user.data)
             console.log('posts.data', posts.data)
-            return  {
+            return {
                 user: user.data,
                 posts: posts.data
             }
@@ -31,6 +31,12 @@ export const getPosts = createAsyncThunk(
 export const postsSlice = createSlice({
     name: 'posts',
     initialState,
+    reducers: {
+        postsClear: (state) => {
+            state.data = null;
+            state.error = null;
+        }
+    },
     extraReducers: builder => {
         builder
             .addCase(getPosts.pending, (state) => {
@@ -39,7 +45,7 @@ export const postsSlice = createSlice({
             })
             .addCase(getPosts.fulfilled, (state, action) => {
                 state.status = 'resolved';
-                state.posts = action.payload;
+                state.data = action.payload;
             })
             .addCase(getPosts.rejected, (state, action) => {
                 state.status = 'rejected';
@@ -48,4 +54,5 @@ export const postsSlice = createSlice({
     }
 })
 
+export const { postsClear } = postsSlice.actions
 export default postsSlice.reducer

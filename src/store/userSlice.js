@@ -12,27 +12,20 @@ const initialState = {
 export const getUsers = createAsyncThunk(
     'users/getUsers',
     async (_, { rejectWithValue }) => {
-
-            try {
-                await delay(300)
-                const response = await axios.get('https://jsonplaceholder.typicode.com/users/')
-                // dispatch(setUsers(response.data))
-                return response.data
-            } catch (err) {
-                return rejectWithValue(err.message);
-            }
-        // }
+        try {
+            await delay(300)
+            const response = await axios.get('https://jsonplaceholder.typicode.com/users/')
+            return response.data
+        } catch (err) {
+            return rejectWithValue(err.message);
+        }
     }
 )
 
 export const userSlice = createSlice({
     name: 'users',
     initialState,
-    // reducers: {
-    //     setUsers: (state, action) => {
-    //         state.users = action.payload
-    //     }
-    // },
+    reducers: {},
 
     extraReducers: builder => {
         builder

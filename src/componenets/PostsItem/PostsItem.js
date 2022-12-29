@@ -1,20 +1,22 @@
 import React from 'react';
+import styles from "../../pages/UserPostListPage/UserPostListPage.module.scss";
 
 
-const PostsItem = ({ post }) => {
+const PostsItem = ({ post, index }) => {
 
     return (
         <>
-            <div>
-                <ul>
-                    <li>
-                        <strong>name:</strong> {post.title}
-                    </li>
-                    <li>
-                        <strong>city:</strong> {post.body}
-                    </li>
-                </ul>
-            </div>
+            <ul className={styles.posts_item}>
+                <li>
+                    <strong>№</strong> {index}
+                </li>
+                <li>
+                    <strong>title:</strong> {post.title}
+                </li>
+                <li>
+                    <strong>body:</strong> {post.body}
+                </li>
+            </ul>
         </>
     );
 };
