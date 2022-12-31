@@ -29,8 +29,8 @@
     margin: auto;
     transition: 0.4s all;
     transform: scale(0.5);
-    width: 500px;
-    height: 300px;
+    width: 600px;
+    height: 400px;
 
     &.active {
       transform: scale(1);
@@ -72,6 +72,8 @@
 
     .block {
       flex: 1 1 auto;
+      padding: 0 15px;
+      text-align: left;
     }
   }
 }

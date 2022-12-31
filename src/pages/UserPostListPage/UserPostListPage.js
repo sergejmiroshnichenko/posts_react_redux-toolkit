@@ -27,6 +27,7 @@ const UserPostListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) 
     }, [id, dispatch]);
 
     const { status, error, data } = useSelector(state => state.posts);
+    console.log('posts>>>>>>',data)
 
     const navigation = useNavigate()
     const goBack = () => navigation(-1)
@@ -41,7 +42,6 @@ const UserPostListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) 
                     setUserName={setUserName}
                 />
                 <main className={classNames(styles.main)}>
-
                     <div className={styles.user_single}>
                         {status !== 'loading' ?
                             <Button

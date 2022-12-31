@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userSlice from "./userSlice";
 import postsSlice from './postsSlice';
-import albumsSlice  from "./albumSlice"
+import albumsSlice from "./albumsSlice"
 import authSlice from "./authSlice";
 
 

@@ -1,20 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './UserItem.module.scss'
 import { PrimaryButton } from '../Button/Button'
 import { SlNote } from 'react-icons/sl';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { getPosts } from "../../store/postsSlice";
 import { useDispatch } from 'react-redux'
+import { albumsClear, getAlbumsUser } from "../../store/albumsSlice";
 
 
 const UserItem = ({ user, setModalActive }) => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const { id } = useParams()
 
     const handleUserPostsBtnClick = (id) => {
         dispatch((getPosts(id)));
         navigate(`/posts/${id}`)
+    }
+
+    useEffect(() => {
+        if (id) {
+            dispatch(getAlbumsUser(id))
+        }
+        return () => {
+            dispatch(albumsClear())
+        }
+    }, [id, dispatch])
+
+    const handleUserAlbumsBtnClick = (id) => {
+        dispatch(getAlbumsUser(id))
     }
 
     return (
@@ -57,9 +72,13 @@ const UserItem = ({ user, setModalActive }) => {
                         endIcon={<SlNote/>}>
                         posts
                     </PrimaryButton>
+
                     <PrimaryButton
-                        onClick={() => setModalActive(true)}
-                        color='secondary'>
+                        color='secondary'
+                        onClick={() => {
+                            setModalActive(true);
+                            handleUserAlbumsBtnClick(user.id)
+                        }}>
                         albums
                     </PrimaryButton>
                 </div>
