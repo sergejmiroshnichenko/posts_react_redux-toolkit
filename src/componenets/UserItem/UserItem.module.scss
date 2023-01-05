@@ -1,6 +1,6 @@
 .user_wrapper{
   border: .0625rem solid #f8f8f8;
-  width: 230px;
+  width: 215px;
   padding: 0 0 15px 0;
   margin: 15px 0;
   box-sizing: border-box;
@@ -14,7 +14,7 @@
 }
 
 .user_list:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .user_list {
@@ -35,4 +35,10 @@ li{
 
 .user_list li{
   font-size: 13px;
+}
+
+@media (min-width: 320px) and (max-width: 992px) {
+  .user_wrapper {
+    width: 100%;
+  }
 }

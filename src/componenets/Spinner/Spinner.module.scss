@@ -13,7 +13,13 @@
   width: 80px;
   height: 80px;
   animation: spin 1s linear infinite;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
   margin: 0 auto;
+  transform: translate(-50%, -50%);
+  align-items: center;
 }
 
 @keyframes spin {
@@ -22,5 +28,15 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+
+@media (min-width: 320px) and (max-width: 768px){
+  .loader{
+    top: 60px;
+    left: 0;
+    bottom: 0;
+    right: 0;
   }
 }

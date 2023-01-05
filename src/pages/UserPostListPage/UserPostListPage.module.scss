@@ -28,3 +28,13 @@
   text-align: center;
   font-size: 15px;
 }
+
+main h1{
+  margin: 0 auto;
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .posts_item {
+    width: 100%;
+  }
+}

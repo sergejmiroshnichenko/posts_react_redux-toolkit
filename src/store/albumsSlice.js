@@ -1,27 +1,27 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
-// import { delay } from "../utils/delay";
 
 
 const initialState = {
     albums: [],
+    currentUserId: null,
     status: null,
     error: null,
 }
+
 export const getAlbumsUser = createAsyncThunk(
     'albums/getAlbumsUser',
-    async (userId, { rejectWithValue }) => {
+    async (userId, { rejectWithValue, dispatch }) => {
         try {
-            // await delay(300)
             const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}/albums`);
-            console.log('response.data >>>>>>>>>.', response.data)
-            // return response.data;
+            dispatch(albumsSlice.actions.setCurrentUserId(userId))
             return response.data
         } catch (err) {
             return rejectWithValue(err.message);
         }
     }
 )
+
 const albumsSlice = createSlice({
     name: 'albums',
     initialState,
@@ -29,7 +29,10 @@ const albumsSlice = createSlice({
         albumsClear: (state) => {
             state.data = null;
             state.error = null;
-        }
+        },
+        setCurrentUserId: (state, action) => {
+            state.currentUserId = action.payload;
+        },
     },
     extraReducers: builder => {
         builder
@@ -48,6 +51,6 @@ const albumsSlice = createSlice({
     }
 })
 
-export const { albumsClear } = albumsSlice.actions
+export const { albumsClear, setCurrentUserId } = albumsSlice.actions
 
 export default albumsSlice.reducer;

@@ -1,4 +1,4 @@
-header{
+header {
   height: 50px;
   text-align: center;
   box-shadow: rgb(204 204 204) 0 2px 8px;
@@ -8,7 +8,7 @@ header{
   justify-content: center;
   background: linear-gradient(to right, rgb(187, 165, 164), rgb(161, 202, 121));
 
-  .header_nav{
+  .header_nav {
     display: flex;
     list-style-type: none;
     font-size: 18px;
@@ -16,24 +16,51 @@ header{
     align-items: center;
     width: 1160px;
 
-    .header_list{
+    .header_list {
       padding-left: 0;
     }
 
-    li{
+    li {
       list-style-type: none;
     }
-    a{
+
+    a {
       text-decoration: none;
     }
-    .logout:hover path{
-      fill:red;
+
+    .logout:hover path {
+      fill: red;
       transition: all .2s linear;
     }
 
-    .logout:hover{
+    .logout:hover {
       color: red;
       transition: all .2s linear;
     }
   }
 }
+
+.header_icon {
+  font-size: 24px;
+}
+
+@media (min-width: 320px) and (max-width: 992px) {
+  header {
+    position: fixed;
+    z-index: 10;
+    width: 100%;
+    margin-top: -15px;
+
+    .header_nav {
+      font-size: 16px;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0 10px;
+    }
+  }
+  .header_icon {
+    font-size: 20px;
+  }
+}
+
+

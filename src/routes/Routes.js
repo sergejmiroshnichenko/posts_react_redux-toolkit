@@ -11,7 +11,6 @@ const AppRoutes = () => {
     const [isLoadedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn') === 'true');
     const [userName, setUserName] = useState(localStorage.getItem('userName'));
 
-
     return (
         <Routes>
             <Route path="/"

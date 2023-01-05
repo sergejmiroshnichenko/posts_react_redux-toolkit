@@ -25,12 +25,20 @@ const Input = ({ name, label, variant = 'outlined', margin, InputProps, ...props
                     InputProps={InputProps}
                     sx={{
                         "& .MuiFormLabel-root-MuiInputLabel-root": { fontSize: '1.19rem' },
-                        "& .MuiFormHelperText-root.Mui-error": { fontSize: '0.85rem' },
+                        "& .MuiFormHelperText-root.Mui-error": {
+                            fontSize: '0.85rem',
+                            position: 'absolute',
+                            marginTop: '55px'
+                        },
+                        "& .MuiInputBase-root.MuiOutlinedInput-root": { marginBottom: '12.5px' },
                         "& .MuiInputBase-root": { backgroundColor: 'white', letterSpacing: '0.7px' },
+                        "& .MuiInputLabel-root.Mui-focused": { color: '#a47c48' },
+                        "& .MuiInputBase-input.MuiOutlinedInput-input": { letterSpacing: '1.25px' },
                         "& .MuiOutlinedInput-root.Mui-focused": {
                             "& > fieldset": {
                                 borderLeftWidth: 6,
                                 padding: '4px !important',
+                                borderColor: '#a47c48'
                             }
                         },
                     }}

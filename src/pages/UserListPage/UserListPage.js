@@ -10,6 +10,7 @@ import Modal from "../../componenets/Modal/Modal";
 import AlbumsItem from "../../componenets/AlbumsItem/AlbumsItem";
 
 
+
 const UserListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) => {
 
     const [modalActive, setModalActive] = useState(false);
@@ -17,82 +18,66 @@ const UserListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) => {
     const dispatch = useDispatch()
 
     const { status, error, users } = useSelector(state => state.user);
-    const { albums } = useSelector(state => state.albums);
+    const { albums, currentUserId } = useSelector(state => state.albums);
 
-    console.log("albums >>10>>>", albums)
-    console.log("users >>>10>>>>>", users)
-
-    let userSingle = users.find(user => user.id === albums.userId)
-    console.log("userSingle+++++++++++", userSingle)
-
+    const currentUser = users.find(user => user.id === currentUserId)
 
     useEffect(() => {
         dispatch(getUsers())
     }, [dispatch])
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.top}>
-                <Header
-                    isLoadedIn={isLoadedIn}
-                    setIsLoggedIn={setIsLoggedIn}
-                    userName={userName}
-                    setUserName={setUserName}
-                />
+        <>
+            <Header
+                isLoadedIn={isLoadedIn}
+                setIsLoggedIn={setIsLoggedIn}
+                userName={userName}
+                setUserName={setUserName}
+            />
 
-                <main className={styles.main}>
-                    {status === 'loading' && (<Spinner/>)}
+            <main className={styles.main}>
 
-                    {error && <h1>Error occured : {error}</h1>}
+                {error && <h1>Error occured : {error}</h1>}
 
-                    {users.map(user => (
+                {status === 'loading' ?
+                    <Spinner/> :
+                    users && users.map(user => (
                             <UserItem
                                 key={user.id}
                                 user={user}
                                 setModalActive={setModalActive}
                             />
                         )
-                    )}
-                </main>
-                <Modal active={modalActive} setActive={setModalActive}
-                       title={'Confirmation'}>
+                    )
+                }
+            </main>
+            <Modal active={modalActive} setActive={setModalActive}
+                   title={'Confirmation'}>
+                {currentUser && (
+                    <ul className={styles.current_user}>
+                        <li>
+                            <strong>userId:</strong> {currentUser.id}
+                        </li>
+                        <li>
+                            <strong>user:</strong> {currentUser.name}
+                        </li>
+                        <li>
+                            <strong>email:</strong> {currentUser.email}
+                        </li>
+                    </ul>
+                )}
 
-                    {/*{users.map(user => (*/}
-                    {/*        <AlbumsItem*/}
-                    {/*            key={user.id}*/}
-                    {/*            user={user}*/}
-                    {/*        />*/}
-                    {/*    )*/}
-                    {/*)}*/}
-                    {/*{users.map(user => (*/}
-                    {/*    <ul className={styles.user_single_info}>*/}
-                    {/*        <li>*/}
-                    {/*            <strong>userId:</strong> {user.id}*/}
-                    {/*        </li>*/}
-                    {/*        <li>*/}
-                    {/*            <strong>user:</strong> {user.name}*/}
-                    {/*        </li>*/}
-                    {/*        <li>*/}
-                    {/*            <strong>email:</strong> {user.email}*/}
-                    {/*        </li>*/}
-                    {/*        <li>*/}
-                    {/*            <strong>albums:</strong>*/}
-                    {/*        </li>*/}
-                    {/*    </ul>*/}
-                    {/*))}*/}
-
-                    {status === 'loading' && <h2>Loading...</h2>}
-                    {error && <h2>{error}</h2>}
-                    {albums.map((album, index) => (
-                        <AlbumsItem
-                            key={album.id}
-                            album={album}
-                            index={index}/>
-                    ))}
-                </Modal>
-            </div>
+                {status === 'loading' && <h2>Loading...</h2>}
+                {error && <h2>{error}</h2>}
+                {albums && albums.map((album, index) => (
+                    <AlbumsItem
+                        key={album.id}
+                        album={album}
+                        index={index}/>
+                ))}
+            </Modal>
             <Footer/>
-        </div>
+        </>
     );
 };
 
