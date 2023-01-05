@@ -3,7 +3,6 @@ import styles from './AlbumsItem.scss'
 
 const AlbumsItem = ({ album, index }) => {
 
-
     return (
         <div className={styles.album_wrapper}>
             <span>{index + 1}. </span>
