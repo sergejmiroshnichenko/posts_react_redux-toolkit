@@ -14,7 +14,7 @@ export const Page404 = ({ isLoadedIn }) => {
         return () => clearTimeout(timer);
     }, [isLoadedIn, navigate])
 
-    return <div>
+    return <>
         <Result
             status="404"
             title="404"
@@ -24,5 +24,5 @@ export const Page404 = ({ isLoadedIn }) => {
                 Back Home
             </Button>}
         />
-    </div>;
+    </>;
 };
