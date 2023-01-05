@@ -1,4 +1,4 @@
-posts-react-redux-toolkit-t6u4.vercel.app
+https://posts-react-redux-toolkit-t6u4.vercel.app
 
 ### `npm start`
 
