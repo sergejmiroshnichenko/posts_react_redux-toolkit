@@ -26,7 +26,7 @@ const Input = ({ name, label, variant = 'outlined', margin, InputProps, ...props
                     sx={{
                         "& .MuiFormLabel-root-MuiInputLabel-root": { fontSize: '1.19rem' },
                         "& .MuiFormHelperText-root.Mui-error": {
-                            fontSize: '0.85rem',
+                            fontSize: '0.843rem',
                             position: 'absolute',
                             marginTop: '55px'
                         },
