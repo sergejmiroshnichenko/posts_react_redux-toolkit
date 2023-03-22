@@ -1,6 +1,5 @@
-import React from 'react';
-import { Controller, useFormContext } from "react-hook-form";
-import { TextField } from "@mui/material";
+import { Controller, useFormContext } from 'react-hook-form'
+import { TextField } from '@mui/material'
 
 
 const Input = ({ name, label, variant = 'outlined', margin, InputProps, ...props }) => {

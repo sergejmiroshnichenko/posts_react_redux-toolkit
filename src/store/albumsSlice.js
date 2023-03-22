@@ -1,4 +1,6 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import { BASE_URL } from 'utils/consts'
+
 import axios from 'axios'
 
 
@@ -13,7 +15,7 @@ export const getAlbumsUser = createAsyncThunk(
     'albums/getAlbumsUser',
     async (userId, { rejectWithValue, dispatch }) => {
         try {
-            const response = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}/albums`);
+            const response = await axios.get(`${ BASE_URL }/users/${ userId }/albums`);
             dispatch(albumsSlice.actions.setCurrentUserId(userId))
             return response.data
         } catch (err) {

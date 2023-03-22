@@ -1,9 +1,6 @@
-import React from 'react';
-
-
 const Form = ({ children, width, ...props }) => {
     return (
-        <form noValidate {...props} autoComplete='off'>
+        <form noValidate {...props} >
             {children}
         </form>
     )

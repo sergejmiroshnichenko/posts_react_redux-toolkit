@@ -1,7 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import userSlice from "./userSlice";
-import postsSlice from './postsSlice';
-import albumsSlice from "./albumsSlice"
+import { configureStore } from '@reduxjs/toolkit'
+import userSlice from './userSlice'
+import postsSlice from './postsSlice'
+import albumsSlice from './albumsSlice'
+import authSlice from './authSlice'
 
 
 export const store = configureStore({
@@ -10,5 +11,6 @@ export const store = configureStore({
         user: userSlice,
         posts: postsSlice,
         albums: albumsSlice,
+        auth: authSlice,
     },
 })

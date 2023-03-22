@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from "axios";
-import { delay } from '../utils/delay'
+import axios from 'axios'
+import { BASE_URL } from 'utils/consts'
+import { delay } from 'utils/delay'
 
 const initialState = {
     data: null,
@@ -13,10 +14,12 @@ export const getPosts = createAsyncThunk(
     async (userId, { rejectWithValue }) => {
         try {
             await delay(300)
-            const user = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
-            const posts = await axios.get(`https://jsonplaceholder.typicode.com/users/${userId}/posts`)
+            const user = await axios.get(`${ BASE_URL }/users/${ userId }`)
+            const articles = await axios.get(`https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=d51f5b077ce848d8ae13421ff6c820ec`)
+            const posts = await axios.get(`https://jsonplaceholder.typicode.com/users/${ userId }/posts`)
 
             console.log('user.data', user.data)
+            console.log('articles.data', articles.data)
             console.log('posts.data', posts.data)
             return {
                 user: user.data,

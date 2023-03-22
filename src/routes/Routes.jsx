@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import UserPostListPage from "../pages/UserPostListPage/UserPostListPage";
-import UserListPage from "../pages/UserListPage/UserListPage";
-import { Page404 } from "../pages/Page404/Page404";
-import Authorization from '../pages/Authorization/Authorization';
+import { useState } from 'react'
+import { Route, Routes } from 'react-router-dom'
+import UserPostListPage from 'pages/UserPostListPage/UserPostListPage'
+import UserListPage from 'pages/UserListPage/UserListPage'
+import { Page404 } from 'pages/Page404/Page404'
+import Authorization from 'pages/Authorization/Authorization'
 
 
 const AppRoutes = () => {
@@ -15,6 +15,7 @@ const AppRoutes = () => {
         <Routes>
             <Route path="/"
                    element={<Authorization
+                       isLoadedIn={isLoadedIn}
                        setIsLoggedIn={setIsLoggedIn}
                        setUserName={setUserName}
                    />}

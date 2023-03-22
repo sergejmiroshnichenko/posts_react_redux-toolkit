@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
-import styles from "../UserListPage/UserListPage.module.scss";
+import { useEffect } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import styles from '../UserListPage/UserListPage.module.scss'
 import s from './UserPostListPage.module.scss'
-import Header from "../../componenets/Header/Header";
-import Footer from "../../componenets/Footer/Footer";
-import { useDispatch, useSelector } from "react-redux";
-import Spinner from "../../componenets/Spinner/Spinner";
-import { getPosts, postsClear } from "../../store/postsSlice";
-import PostsItem from '../../componenets/PostsItem/PostsItem'
-import classNames from "classnames";
-import { Button } from "@mui/material";
+import Header from 'componenets/Header/Header'
+import Footer from 'componenets/Footer/Footer'
+import { useDispatch, useSelector } from 'react-redux'
+import Spinner from 'componenets/Spinner/Spinner'
+import { getPosts, postsClear } from 'store/postsSlice'
+import PostsItem from 'componenets/PostsItem/PostsItem'
+import classNames from 'classnames'
+import { IoArrowBackCircleOutline as BackButton} from 'react-icons/io5'
 
 
 const UserPostListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) => {
@@ -42,13 +42,10 @@ const UserPostListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) 
             <main className={classNames(styles.main)}>
                 <div className={styles.user_single}>
                     {status !== 'loading' ?
-                        <Button
-                            variant="outlined"
+                        <BackButton
                             className={s.go_back}
-                            size='small'
                             onClick={goBack}>
-                            Go back
-                        </Button>
+                        </BackButton>
                         : ''}
                     {data && data.user && (
                         <ul className={styles.user_single_info}>
@@ -74,7 +71,11 @@ const UserPostListPage = ({ isLoadedIn, setIsLoggedIn, userName, setUserName }) 
 
                 <div className={s.post_list}>
                     {data && data.posts.map((post, index) => (
-                            <PostsItem key={post.id} post={post} index={index + 1}/>
+                            <PostsItem
+                                key={post.id}
+                                post={post}
+                                index={index + 1}
+                            />
                         )
                     )}
                 </div>

@@ -1,6 +1,5 @@
-import React from "react";
-import styles from './App.module.scss';
-import AppRoutes from '../../routes/Routes'
+import styles from './App.module.scss'
+import AppRoutes from 'routes/Routes'
 
 
 const App = () => {

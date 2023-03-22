@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react'
 import styles from './UserItem.module.scss'
 import { PrimaryButton } from '../Button/Button'
-import { SlNote } from 'react-icons/sl';
+import { SlNote } from 'react-icons/sl'
 import { useNavigate, useParams } from 'react-router-dom'
-import { getPosts } from "../../store/postsSlice";
+import { getPosts } from 'store/postsSlice'
 import { useDispatch } from 'react-redux'
-import { albumsClear, getAlbumsUser } from "../../store/albumsSlice";
+import { albumsClear, getAlbumsUser } from 'store/albumsSlice'
 
 
 const UserItem = ({ user, setModalActive }) => {

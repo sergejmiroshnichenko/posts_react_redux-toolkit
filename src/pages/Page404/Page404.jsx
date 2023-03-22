@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react'
 import { Result, Button } from 'antd'
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 
 export const Page404 = ({ isLoadedIn }) => {

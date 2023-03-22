@@ -1,5 +1,4 @@
-import React from 'react';
-import styles from "../../pages/UserPostListPage/UserPostListPage.module.scss";
+import styles from 'pages/UserPostListPage/UserPostListPage.module.scss'
 
 
 const PostsItem = ({ post, index }) => {

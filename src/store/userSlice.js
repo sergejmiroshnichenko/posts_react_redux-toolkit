@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import axios from "axios";
-import { delay } from '../utils/delay'
+import { BASE_URL } from 'utils/consts'
+import axios from 'axios'
+import { delay } from 'utils/delay'
 
 
 const initialState = {
@@ -14,7 +15,8 @@ export const getUsers = createAsyncThunk(
     async (_, { rejectWithValue }) => {
         try {
             await delay(300)
-            const response = await axios.get('https://jsonplaceholder.typicode.com/users/')
+            const response = await axios.get(`${ BASE_URL }/users/`)
+            console.log('response.data>>>>', response.data)
             return response.data
         } catch (err) {
             return rejectWithValue(err.message);

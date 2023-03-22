@@ -1,6 +1,5 @@
-import React from 'react';
-import styles from './Modal.module.scss';
-import classNames from "classnames";
+import styles from './Modal.module.scss'
+import classNames from 'classnames'
 import { MdOutlineClose } from 'react-icons/md'
 
 
